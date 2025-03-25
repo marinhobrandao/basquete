@@ -8,7 +8,7 @@ export default function Index() {
         styles.container
       }
     >
-      <Text style={styles.text}>Bem vindo a página de basquete</Text>
+      <Text style={styles.text}>BEM VINDO A PAGINA DE BASQUETE</Text>
       
       <Text style={styles.text}>O basquetebol, popularmente conhecido como basquete ou básquete,
          é um esporte coletivo inventado em 1891 pelo professor de educação física canadense James Naismith, na Associação Cristã de Moços de Springfield, 
@@ -25,9 +25,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: 	"#fff"
+    backgroundColor: 	"#F0B786",
   },
   text: {
     color: "#000",
+    width: '80%',
+    maxWidth: 600,
+    textAlign: 'justify',
+    padding: 5,
   },
 }); 

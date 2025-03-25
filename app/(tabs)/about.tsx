@@ -9,8 +9,10 @@ export default function about() {
         styles.container
       }
     >
-      <Text style={styles.text}>Saiba mais sobre</Text><br></br>
+      <Text style={styles.text}>SAIBA MAIS SOBRE</Text><br></br>
       <Text style={styles.text}>Aqui estão os principais marcos da evolução do esporte:
+        <br></br>
+        <br></br>
 
 Criação:
 
@@ -42,11 +44,19 @@ O jogo ficou mais rápido e baseado em espaçamento e movimentação.
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F0B786',
     justifyContent: "center",
     alignItems: "center",
+    textAlign: 'justify'
+
 
   },
 
-  text:{color: '#000'},
+  text:{
+    color: '#000',
+    width: '80%',
+    maxWidth: 600,
+    textAlign: 'justify',
+    padding: 2,
+  },
 }) 

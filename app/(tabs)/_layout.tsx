@@ -1,19 +1,22 @@
 import { Tabs } from "expo-router";
 import Ionicons  from "@expo/vector-icons/Ionicons";
 import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
+
 
 export default function TabLayout() {
   return(
   <Tabs
     screenOptions={{
-      tabBarActiveTintColor: '#ffffff',
-      tabBarInactiveTintColor: '#ffffff',
-      headerStyle: {backgroundColor:'#3DA6F5',
+      tabBarActiveTintColor: '#000',
+      tabBarInactiveTintColor: '#000',
+      headerStyle: {backgroundColor:'#F27A33',
         borderBottomWidth: 0,
       },
       headerShadowVisible: false,
-      headerTintColor: '#fff',
-      tabBarStyle:{backgroundColor:'#3DA6F5',
+      headerTintColor: '#000',
+      tabBarStyle:{backgroundColor:'#F27A33',
         borderTopWidth: 0,
       }
     }}
@@ -22,21 +25,32 @@ export default function TabLayout() {
       <Tabs.Screen
       name="index"
       options={{
-        title: "Home",
+        title: "Início",
         tabBarIcon: ({ color, focused }) => (
-          <Ionicons name={focused ? "home-sharp" : "home-outline"} color={color} size={24}></Ionicons>
+          <MaterialCommunityIcons name={focused ? "basketball-hoop" : "basketball-hoop-outline"} color={color} size={24}></MaterialCommunityIcons>
         ),
       }}
       />
       <Tabs.Screen
       name="about"
       options={{
-        title:"About",
+        title:"Sobre",
         tabBarIcon: ({ color, focused}) => (
-          <AntDesign name={focused ? "questioncircle" : "questioncircleo"}  size={24} color={color} /> 
+          <Ionicons name={focused ? "basketball" : "basketball-outline"} color={color} size={24}></Ionicons>
         ),
       }}
       />
+
+      <Tabs.Screen
+      name="toDoList"
+      options={{
+        title: "Tarefas",
+        tabBarIcon: ({ color, focused }) => (
+          <AntDesign name={focused ? "appstore1" : "appstore-o"} color={color} size={24}></AntDesign>
+        ),
+      }}
+      />
+
   </Tabs>
   );
 }   

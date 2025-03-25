@@ -16,7 +16,10 @@ export default function App() {
           value={novaTarefa}
           onChangeText={setNovaTarefa}
         />
-        <Button title="Adicionar" onPress={adicionarTarefa} />
+        <TouchableOpacity style={styles.botao} onPress={adicionarTarefa} >
+        <Text style={styles.textoBotao}>Adicionar</Text>
+        </TouchableOpacity>
+        
       </View>
       
       <FlatList
@@ -26,7 +29,7 @@ export default function App() {
           <View style={styles.tarefaContainer}>
             <Text style={styles.tarefaTexto}>{item.texto}</Text>
             <TouchableOpacity onPress={() => removerTarefa(item.id)}>
-              <Text style={styles.remover}>✖</Text>
+              <Text style={styles.remover}>✖</Text>  
             </TouchableOpacity>
           </View>
         )}
@@ -36,11 +39,26 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#f4f4f4' },
+  container: { flex: 1, padding: 20, backgroundColor: '#F0B786' },
   titulo: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 20 },
-  inputContainer: { flexDirection: 'row', marginBottom: 10 },
-  input: { flex: 1, borderWidth: 1, borderColor: '#ccc', padding: 10, borderRadius: 5, marginRight: 10 },
-  tarefaContainer: { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#fff', padding: 15, marginBottom: 5, borderRadius: 5, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 3, elevation: 2 },
+  inputContainer: { flexDirection: 'row', marginBottom: 10, backgroundColor: '#e2ac6d' },
+  input: { flex: 1, borderWidth: 1, borderColor: '#000', padding: 10, borderRadius: 5},
+  tarefaContainer: { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#e2ac6d', padding: 15, marginBottom: 5, borderRadius: 5, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 3, elevation: 2 },
   tarefaTexto: { fontSize: 16 },
   remover: { fontSize: 18, color: 'red' },
+
+  botao: {
+    backgroundColor: '#F27A33',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 5,
+  },
+
+  textoBotao: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
