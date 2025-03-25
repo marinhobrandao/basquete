@@ -9,10 +9,9 @@ export default function about() {
         styles.container
       }
     >
-      <Text style={styles.text}>SAIBA MAIS SOBRE</Text><br></br>
+      <Text style={styles.text}>SAIBA MAIS SOBRE</Text>
       <Text style={styles.text}>Aqui estão os principais marcos da evolução do esporte:
-        <br></br>
-        <br></br>
+
 
 Criação:
 

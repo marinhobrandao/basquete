@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     width: '80%',
     maxWidth: 600,
     textAlign: 'justify',
-    padding: 5,
+    padding: 10,
   },
 }); 
