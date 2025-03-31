@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, Button, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTarefas } from '../hooks/useTarefas';
 
+
 export default function App() {
   const { tarefas, novaTarefa, setNovaTarefa, adicionarTarefa, removerTarefa } = useTarefas();
 
@@ -17,7 +18,7 @@ export default function App() {
           onChangeText={setNovaTarefa}
         />
         <TouchableOpacity style={styles.botao} onPress={adicionarTarefa} >
-        <Text style={styles.textoBotao}>Adicionar</Text>
+        <Text style={styles.textoBotao}>+</Text>
         </TouchableOpacity>
         
       </View>
