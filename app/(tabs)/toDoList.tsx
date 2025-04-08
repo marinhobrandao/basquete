@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   input: { flex: 1, borderWidth: 1, borderColor: '#000', padding: 10, borderRadius: 5},
   tarefaContainer: { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#e2ac6d', padding: 15, marginBottom: 5, borderRadius: 5, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 3, elevation: 2 },
   tarefaTexto: { fontSize: 16 },
-  remover: { fontSize: 18, color: 'red' },
+  remover: { fontSize: 18, color: 'black' },
 
   botao: {
     backgroundColor: '#F27A33',
