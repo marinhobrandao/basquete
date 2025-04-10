@@ -3,8 +3,8 @@ import { Link } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
 import{useState} from 'react';
 
-import Button from "../components/Button";
-import ImageViewer from "../components/ImageViewer";
+import Button from "@/components/Button";
+import ImageViewer from "@/components/ImageViewer";
 
 const PlaceholderImage = require ('@/assets/images/basquete-img.jpg');
 
