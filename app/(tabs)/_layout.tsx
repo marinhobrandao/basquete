@@ -31,14 +31,15 @@ export default function TabLayout() {
         ),
       }}
       />
+
       <Tabs.Screen
       name="about"
       options={{
         title:"Sobre",
         tabBarIcon: ({ color, focused}) => (
-          <Ionicons name={focused ? "basketball" : "basketball-outline"} color={color} size={24}></Ionicons>
+          <AntDesign name={focused ? "infocirlce" : "infocirlceo"} color={color} size={24}></AntDesign>
         ),
-      }}
+      }}     
       />
 
       <Tabs.Screen
@@ -47,6 +48,16 @@ export default function TabLayout() {
         title: "Tarefas",
         tabBarIcon: ({ color, focused }) => (
           <AntDesign name={focused ? "appstore1" : "appstore-o"} color={color} size={24}></AntDesign>
+        ),
+      }}
+      />
+
+      <Tabs.Screen
+      name="buscaTime"
+      options={{
+        title:"Times",
+        tabBarIcon: ({ color, focused}) => (
+          <Ionicons name={focused ? "basketball" : "basketball-outline"} color={color} size={24}></Ionicons>
         ),
       }}
       />

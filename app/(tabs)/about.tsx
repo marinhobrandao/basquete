@@ -4,11 +4,7 @@ import { Link } from 'expo-router';
 
 export default function about() {
   return (
-    <View
-      style={
-        styles.container
-      }
-    >
+    <View style={ styles.container}>
       <Text style={styles.text}>SAIBA MAIS SOBRE</Text>
       <Text style={styles.text}>Aqui estão os principais marcos da evolução do esporte:
 
