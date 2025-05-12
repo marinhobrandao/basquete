@@ -5,6 +5,7 @@ interface TimeNBA {
   nickname: string;
   city: string;
   logo: string;
+  nbaFranchise: boolean;
 }
 
 export function useBuscaJogo() {
@@ -28,10 +29,10 @@ export function useBuscaJogo() {
             name: item.name,
             nickname: item.nickname,
             city: item.city,
-            logo: item.logo
+            logo: item.logo,
+            nbaFranchise: item.nbaFranchise,
             }));
             setTimes(resultado);
-            setFiltrados(resultado);
         })
         .catch((err) => {
             console.error('Erro ao buscar times:', err);

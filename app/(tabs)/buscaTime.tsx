@@ -25,8 +25,10 @@ export default function BuscaJogo(){
           <View style={styles.item}>
             <Image source={{ uri: item.logo }} style={styles.logo} />
             <View>
-              <Text style={styles.nome}>{item.name} ({item.nickname})</Text>
-              <Text>Cidade: {item.city}</Text>
+              <Text style={styles.nome}>{item.name}</Text>
+              <Text style={styles.fonte}>Apelido: {item.nickname}</Text>
+              <Text style={styles.fonte}>Cidade: {item.city}</Text>
+              <Text style={styles.fonte}>Franquia: {item.nbaFranchise ? 'Sim' : 'Não'}</Text>
             </View>
           </View>
         )}
@@ -40,8 +42,9 @@ const styles = StyleSheet.create({
   input: {borderWidth: 1, borderColor: '#000', padding: 8, borderRadius: 4, marginBottom: 8, backgroundColor: '#e2ac6d'},
   botao: {backgroundColor: '#F27A33', padding: 12, alignItems: 'center', borderRadius: 4, marginBottom: 12},
   botaoTexto: { color: '#fff', fontWeight: 'bold' },
-  item: {flexDirection: 'row', alignItems: 'center', marginBottom: 12},
+  item: {flexDirection: 'row', alignItems: 'center', backgroundColor:'#f29c33', borderWidth: 2, borderRadius: 4},
   logo: { width: 50, height: 50, marginRight: 12},
   nome: {fontWeight: 'bold'},
+  fonte: {padding: 2},
   titulo: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 20 }
 });
