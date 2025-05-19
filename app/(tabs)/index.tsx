@@ -5,11 +5,14 @@ import{useState} from 'react';
 
 import Button from "@/components/Button";
 import ImageViewer from "@/components/ImageViewer";
+import IconButton from "@/components/IconButton";
+import CircleButton from "@/components/CircleButton";
 
 const PlaceholderImage = require ('@/assets/images/basquete-img.jpg');
 
 export default function Index() {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
+  const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
 
   const pickImageAsync = async() => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -20,23 +23,44 @@ export default function Index() {
 
     if (!result.canceled){
       setSelectedImage(result.assets[0].uri);
+      setShowAppOptions(true);
     } else {
       alert('Você não selecionou nenhuma imagem');
     }
   };
+
+  const onReset = () => {
+    setShowAppOptions(false);
+  };
+
+  const onAddSticker = () =>{
+    //implement later
+  }
+
+  const onSaveImageAsync = async() =>{
+    //implements later
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.imaageContainer}>
         <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
       </View>
-   
-      <View style={styles.footerContainer}>
+      {showAppOptions ? (
+        <View style={styles.optionsContainer}>
+          <View style={styles.optionsRow}>
+            <IconButton icon="refresh" label="Reset" onPress={onReset}/>
+            <CircleButton onPress={onAddSticker}/>
+            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync}/>
+          </View>
+        </View>
+      ) : (
+       <View style={styles.footerContainer}>
         <Button theme="primary" label="Escolha uma foto" onPress={pickImageAsync}/>
-        <Button label="Use essa foto"/>
+        <Button label="Use essa foto" onPress={() => setShowAppOptions(true)}/>
       </View>
+      )}   
     </View>
-
   );
 }
 
@@ -57,5 +81,14 @@ const styles = StyleSheet.create({
   footerContainer:{
     alignItems:'center',
     justifyContent: 'flex-end',
+  },
+
+  optionsContainer:{
+    position:'absolute',
+    bottom: 80,
+  },
+  optionsRow:{
+    alignItems:'center',
+    flexDirection:'row',
   },
 }); 
