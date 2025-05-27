@@ -43,7 +43,7 @@ export default function Index() {
   };
 
   const onModalClose = () =>{
-    setIsModalVisible(false);
+    setIsModalVisible(false); 
   };
 
 
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   footerContainer:{
     alignItems:'center',
     justifyContent: 'flex-end',
+    height: 100,
   },
 
   optionsContainer:{
