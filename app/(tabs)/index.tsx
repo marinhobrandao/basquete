@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, ImageSourcePropType } from "react-native";
 import { Link } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
 import{useState} from 'react';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import Button from "@/components/Button";
 import ImageViewer from "@/components/ImageViewer";
@@ -52,7 +53,7 @@ export default function Index() {
   };
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.imaageContainer}>
         <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
         {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
@@ -74,7 +75,7 @@ export default function Index() {
       <EmojiPicker isVisible={isModaVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
         </EmojiPicker>   
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
