@@ -27,7 +27,7 @@ export default function TabLayout() {
       options={{
         title: "Início",
         tabBarIcon: ({ color, focused }) => (
-          <MaterialCommunityIcons name={focused ? "basketball-hoop" : "basketball-hoop-outline"} color={color} size={24}></MaterialCommunityIcons>
+            <MaterialCommunityIcons name={focused ? "basketball-hoop" : "basketball-hoop-outline"} color={color} size={24}></MaterialCommunityIcons>
         ),
       }}
       />
