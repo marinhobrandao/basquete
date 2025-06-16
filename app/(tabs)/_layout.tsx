@@ -45,7 +45,7 @@ export default function TabLayout() {
       <Tabs.Screen
       name="toDoList"
       options={{
-        title: "Tarefas",
+        title: "Exercícios",
         tabBarIcon: ({ color, focused }) => (
           <AntDesign name={focused ? "appstore1" : "appstore-o"} color={color} size={24}></AntDesign>
         ),
