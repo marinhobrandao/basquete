@@ -62,6 +62,16 @@ export default function TabLayout() {
       }}
       />
 
+      <Tabs.Screen
+      name="quizScreen"
+      options={{
+        title:"Quiz",
+        tabBarIcon: ({ color, focused}) => (
+          <Ionicons name={focused ? "trophy" : "trophy-outline"} color={color} size={24}></Ionicons>
+        ),
+      }}
+      />
+
   </Tabs>
   );
 }   

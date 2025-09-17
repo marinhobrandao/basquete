@@ -1,7 +1,6 @@
 import { Text, View, StyleSheet, ImageSourcePropType, Platform } from "react-native";
 import { Link } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
-import{useState,useRef} from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import * as MediaLibrary from 'expo-media-library';
 import Button from "@/components/Button";
@@ -13,7 +12,7 @@ import EmojiList from "@/components/EmojiList";
 import EmojiSticker from "@/components/EmojiSticker";
 import {captureRef} from 'react-native-view-shot';
 import domtoimage from 'dom-to-image';
-
+import React, { useRef, useState } from "react";
 
 const PlaceholderImage = require ('@/assets/images/basquete-img.jpg');
 
@@ -24,7 +23,7 @@ export default function Index() {
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModaVisible, setIsModalVisible] = useState<boolean>(false);
   const [pickedEmoji, setPickedEmoji] = useState<ImageSourcePropType | undefined>(undefined); 
-
+  const [renderKey, setRenderKey] = useState(0); 
 
   const pickImageAsync = async() => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -45,8 +44,19 @@ export default function Index() {
     }
   };
 
+ 
   const onReset = () => {
+    setPickedEmoji(undefined);
+    setSelectedImage(undefined);
+    setRenderKey(k => k + 1); 
+  };
+
+
+  const onResetAll = () => {
+    setPickedEmoji(undefined);
+    setSelectedImage(undefined);
     setShowAppOptions(false);
+    setRenderKey(k => k + 1);
   };
 
   const onAddSticker = () =>{
@@ -57,46 +67,63 @@ export default function Index() {
     setIsModalVisible(false); 
   };
 
+  const onSaveImageAsync = async () => {
+    if (Platform.OS !== "web") {
+      try {
+        const { status } = await MediaLibrary.requestPermissionsAsync();
+        if (status !== "granted") {
+          alert("Permissão para acessar a galeria é necessária!");
+          return;
+        }
 
-  const onSaveImageAsync = async() =>{
-    if(Platform.OS !== 'web'){
-        try{
-        const localUri = await captureRef(imageRef, {
+        const localUri = await captureRef(imageRef.current!, {
           height: 440,
           quality: 1,
+          result: "tmpfile",
         });
 
         await MediaLibrary.saveToLibraryAsync(localUri);
-        if(localUri){
-          alert('Saved!');
+        if (localUri) {
+          alert("Saved!");
         }
-      }catch(e){
-        console.log(e);
+      } catch (e) {
+        console.log("Erro ao salvar:", e);
       }
     } else {
-      try{
+      try {
         const dataUrl = await domtoimage.toJpeg(imageRef.current, {
           quality: 0.95,
           width: 320,
           height: 440,
         });
 
-        let link = document.createElement('a');
-        link.download = 'sticker-smash.jpeg';
+        let link = document.createElement("a");
+        link.download = "sticker-smash.jpeg";
         link.href = dataUrl;
         link.click();
-      } catch(e) {
+      } catch (e) {
         console.log(e);
       }
-    }  
+    }
   };
 
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.imaageContainer}>
-        <View ref={imageRef} collapsable={false}>
+        <View
+          ref={imageRef}
+          collapsable={false}
+          key={`canvas-${renderKey}`}   
+          style={{ position: "relative" }}
+        >
           <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
-          {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
+          {pickedEmoji && (
+            <EmojiSticker
+              key={`sticker-${renderKey}`} 
+              imageSize={40}
+              stickerSource={pickedEmoji}
+            />
+          )}
         </View>
       </View>
       {showAppOptions ? (
@@ -115,7 +142,7 @@ export default function Index() {
       )}
       <EmojiPicker isVisible={isModaVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
-        </EmojiPicker>   
+      </EmojiPicker>   
     </GestureHandlerRootView>
   );
 }
@@ -127,19 +154,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: 	"#F0B786",
   },
-
   imaageContainer:{
     width: '100%',
     maxWidth: 700,
     paddingHorizontal: 20,
   },
-
   footerContainer:{
     alignItems:'center',
     justifyContent: 'flex-end',
     height: 100,
   },
-
   optionsContainer:{
     position:'absolute',
     bottom: 80,
@@ -149,4 +173,3 @@ const styles = StyleSheet.create({
     flexDirection:'row',
   },
 }); 
-
