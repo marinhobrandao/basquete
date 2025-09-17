@@ -156,10 +156,10 @@ export default function QuizScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, justifyContent: "center", backgroundColor: "#fff" },
+  container: { flex: 1, padding: 20, justifyContent: "center", backgroundColor: "#fdc18dff" },
   title: { fontSize: 24, fontWeight: "bold", textAlign: "center", marginBottom: 20 },
   question: { fontSize: 20, fontWeight: "bold", marginBottom: 20 },
-  option: { backgroundColor: "#f1f1f1", padding: 15, borderRadius: 10, marginBottom: 10 },
+  option: { backgroundColor: "#e65b0bff", padding: 15, borderRadius: 10, marginBottom: 10 },
   selectedOption: { backgroundColor: "#add8e6" },
   optionText: { fontSize: 16 },
   feedback: { fontSize: 18, fontWeight: "bold", marginVertical: 10, textAlign: "center" },

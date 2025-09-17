@@ -39,7 +39,7 @@ O jogo ficou mais rápido e baseado em espaçamento e movimentação.
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#F0B786',
+    backgroundColor: '#fdc18dff',
     justifyContent: "center",
     alignItems: "center",
     textAlign: 'justify'

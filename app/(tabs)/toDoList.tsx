@@ -40,7 +40,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#F0B786' },
+  container: { flex: 1, padding: 20, backgroundColor: '#fdc18dff' },
   titulo: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 20 },
   inputContainer: { flexDirection: 'row', marginBottom: 10, backgroundColor: '#e2ac6d' },
   input: { flex: 1, borderWidth: 1, borderColor: '#000', padding: 10, borderRadius: 5},
