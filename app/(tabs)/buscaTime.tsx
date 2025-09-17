@@ -1,20 +1,20 @@
-import {View, Text, TextInput, FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useBuscaJogo } from '@/hooks/useBuscaTime';
-import React, { useState, useEffect } from 'react';
+import LogoImage from '@/components/logoImage'; // o componente que criei antes
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-
-export default function BuscaJogo(){
-  const { input, setInput, times, setTimes, filtrados, setFiltrados, buscar } = useBuscaJogo();
+export default function BuscaJogo() {
+  const { input, setInput, filtrados, setFiltrados, buscar } = useBuscaJogo();
   const [erro, setErro] = useState('');
-  
+
   const limpar = () => {
     setInput('');
     setFiltrados([]);
     setErro('');
   };
 
-   return (
+  return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Times NBA</Text>
 
@@ -52,8 +52,8 @@ export default function BuscaJogo(){
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.item}>
-            <Image source={{ uri: item.logo }} style={styles.logo} />
-            <View>
+            <LogoImage uri={item.logo} />
+            <View style={{ flex: 1 }}>
               <Text style={styles.nome}>{item.name}</Text>
               <Text style={styles.fonte}>Apelido: {item.nickname}</Text>
               <Text style={styles.fonte}>Cidade: {item.city}</Text>
@@ -66,18 +66,17 @@ export default function BuscaJogo(){
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     padding: 16,
     flex: 1,
-    backgroundColor: '#fdc18dff'
+    backgroundColor: '#fdc18dff',
   },
   titulo: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20
+    marginBottom: 20,
   },
   searchContainer: {
     flexDirection: 'row',
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     marginBottom: 10,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   item: {
     flexDirection: 'row',
@@ -123,24 +122,16 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3
-  },
-  logo: {
-    width: 60,
-    height: 60,
-    marginRight: 16,
-    borderRadius: 30,
-    borderWidth: 1,
-    borderColor: '#ccc'
+    elevation: 3,
   },
   nome: {
     fontWeight: 'bold',
     fontSize: 18,
-    marginBottom: 4
+    marginBottom: 4,
   },
   fonte: {
     paddingVertical: 2,
     color: '#555',
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 });

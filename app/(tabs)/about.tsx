@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { Link } from 'expo-router';
 
 
-export default function about() {
+export default function About() {
   return (
     <View style={ styles.container}>
       <Text style={styles.text}>SAIBA MAIS SOBRE</Text>

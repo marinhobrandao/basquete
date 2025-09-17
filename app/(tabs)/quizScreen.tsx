@@ -23,7 +23,6 @@ const allQuestions: Question[] = [
   { question: "Qual jogador tem o recorde de mais triplos em uma temporada?", options: ["Stephen Curry", "Klay Thompson", "James Harden", "Ray Allen"], answer: "Stephen Curry" },
   { question: "Qual jogador ganhou 6 campeonatos com os Bulls nos anos 90?", options: ["Michael Jordan", "Scottie Pippen", "Dennis Rodman", "Steve Kerr"], answer: "Michael Jordan" },
   { question: "Quem é conhecido como 'The Beard'?", options: ["James Harden", "LeBron James", "Anthony Davis", "Chris Paul"], answer: "James Harden" },
-  // Novas 5 perguntas adicionadas:
   { question: "Qual jogador é apelidado de 'The Greek Freak'?", options: ["Giannis Antetokounmpo", "Nikola Jokic", "Luka Doncic", "Anthony Davis"], answer: "Giannis Antetokounmpo" },
   { question: "Qual time da NBA é conhecido como 'Heat'?", options: ["Miami Heat", "Toronto Raptors", "Houston Rockets", "San Antonio Spurs"], answer: "Miami Heat" },
   { question: "Qual jogador é famoso pelo movimento 'Eurostep'?", options: ["Manu Ginóbili", "Kyrie Irving", "James Harden", "Chris Paul"], answer: "Manu Ginóbili" },
