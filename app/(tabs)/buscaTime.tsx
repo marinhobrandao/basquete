@@ -1,17 +1,39 @@
-import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
 import { useBuscaJogo } from '@/hooks/useBuscaTime';
-import LogoImage from '@/components/logoImage'; // o componente que criei antes
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import React, { useState } from 'react';
 
 export default function BuscaJogo() {
-  const { input, setInput, filtrados, setFiltrados, buscar } = useBuscaJogo();
+  const { input, setInput, filtrados, buscar, setFiltrados } = useBuscaJogo();
   const [erro, setErro] = useState('');
 
   const limpar = () => {
     setInput('');
     setFiltrados([]);
     setErro('');
+  };
+
+  const renderItem = ({ item }: any) => {
+    // Forçar HTTPS caso a URL venha como http
+    const logoUrl = item.logo?.startsWith('http')
+      ? item.logo.replace('http://', 'https://')
+      : item.logo;
+
+    return (
+      <View style={styles.item}>
+        <Image
+          source={{ uri: logoUrl }}
+          style={styles.logo}
+          contentFit="contain"
+        />
+        <View style={{ marginLeft: 12 }}>
+          <Text style={styles.nome}>{item.name}</Text>
+          <Text style={styles.fonte}>Apelido: {item.nickname}</Text>
+          <Text style={styles.fonte}>Cidade: {item.city}</Text>
+          <Text style={styles.fonte}>Franquia: {item.nbaFranchise ? 'Sim' : 'Não'}</Text>
+        </View>
+      </View>
+    );
   };
 
   return (
@@ -25,7 +47,6 @@ export default function BuscaJogo() {
           value={input}
           onChangeText={setInput}
         />
-
         <TouchableOpacity
           style={styles.iconButton}
           onPress={() => {
@@ -39,7 +60,6 @@ export default function BuscaJogo() {
         >
           <Text style={styles.iconText}>🔍</Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={styles.iconButton} onPress={limpar}>
           <Text style={styles.iconText}>❌</Text>
         </TouchableOpacity>
@@ -50,17 +70,8 @@ export default function BuscaJogo() {
       <FlatList
         data={filtrados}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.item}>
-            <LogoImage uri={item.logo} />
-            <View style={{ flex: 1 }}>
-              <Text style={styles.nome}>{item.name}</Text>
-              <Text style={styles.fonte}>Apelido: {item.nickname}</Text>
-              <Text style={styles.fonte}>Cidade: {item.city}</Text>
-              <Text style={styles.fonte}>Franquia: {item.nbaFranchise ? 'Sim' : 'Não'}</Text>
-            </View>
-          </View>
-        )}
+        renderItem={renderItem}
+        contentContainerStyle={{ paddingBottom: 20 }}
       />
     </View>
   );
@@ -123,6 +134,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    borderRadius: 8,
+    borderWidth: 1,
   },
   nome: {
     fontWeight: 'bold',
